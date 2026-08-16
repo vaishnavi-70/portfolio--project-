@@ -9,14 +9,12 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-// Local Backup Data (Agar network issue ho toh website crash na ho)
+
 const localProjects = [
     { id: 1, title: "Real-Time Disaster Monitoring & Training System", description: "A comprehensive system designed for monitoring environmental parameters in real-time and providing simulated training modules for emergency handling.", tech: "C#, .NET Framework", github: "https://github.com/vaishnavi-70" },
     { id: 2, title: "Intermediate Code Generator", description: "A compiler design component that processes specific assembly instructions to generate Variant I intermediate code along with dynamic symbol tables.", tech: "Compiler Design, Assembly", github: "https://github.com/vaishnavi-70" },
     { id: 3, title: "Advanced B+ Tree Structure Implementation", description: "A data structure implementation showcasing the step-by-step construction and optimization of a B+ Tree with key index ordering.", tech: "Data Structures, Algorithms", github: "https://github.com/vaishnavi-70" }
 ];
-
-// MongoDB Connection Setup with Error Handling
 let isDbConnected = false;
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
@@ -57,7 +55,6 @@ app.get('/api/projects', async (req, res) => {
             const dbProjects = await Project.find().sort({ id: 1 });
             return res.json(dbProjects);
         } else {
-            // Agar DB connect nahi hua toh local array bhej do
             return res.json(localProjects);
         }
     } catch (error) {
