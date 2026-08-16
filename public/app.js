@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             const grid = document.getElementById('projects-grid');
-            grid.innerHTML = ''; // Pehle grid ko empty karein
+            grid.innerHTML = ''; 
 
             
             data.forEach(project => {
