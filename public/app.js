@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Backend API endpoint se projects data fetch karne ke liye
+    
     fetch('/api/projects')
         .then(response => {
             if (!response.ok) {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const grid = document.getElementById('projects-grid');
             grid.innerHTML = ''; // Pehle grid ko empty karein
 
-            // Har ek project ke liye card generate karein
+            
             data.forEach(project => {
                 const card = document.createElement('div');
                 card.className = 'card';
